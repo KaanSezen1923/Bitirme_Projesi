@@ -1,6 +1,22 @@
 import datetime
 import random
+import psycopg2
+from dotenv import load_dotenv
+import os 
 
+load_dotenv()
+
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+db_host = os.getenv("DB_HOST")
+db_name = os.getenv("DB_NAME")
+conn = psycopg2.connect(
+    dbname=db_name,
+    user=db_user,
+    password=db_password,
+    host=db_host
+)
+cursor = conn.cursor()
 
 inekler = [
     (1, 'Sarıkız', 'Holstein', 'Dişi ', datetime.date(2020, 5, 12), 482193),
@@ -121,3 +137,19 @@ with open('insert_data.sql', 'w', encoding='utf-8') as f:
     f.write("\nCOMMIT;")
 
 print("Tamamlandı! Veriler 'insert_data.sql' dosyasına, takvim sırasına göre yazıldı.")
+
+
+with open('insert_data.sql', 'r') as file:
+    sql_script = file.read()
+
+try:
+    
+    cursor.execute(sql_script)
+    conn.commit()
+    print("Veriler başarıyla yüklendi!")
+except Exception as e:
+    conn.rollback()
+    print(f"Hata oluştu: {e}")
+finally:
+    cursor.close()
+    conn.close()
