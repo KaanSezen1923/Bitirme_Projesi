@@ -1,0 +1,28 @@
+# --- Güvenlik ve Özel Dosyalar (BUNLARI ASLA GÖNDERME) ---
+.env
+insert_data.sql
+
+# --- Python Derleme Dosyaları ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Sanal Ortam (Virtual Environment) ---
+# Sanal ortam klasörünün adı aşağıdakilerden hangisiyse onu yakalar
+venv/
+.venv/
+env/
+myenv/
+
+# --- IDE ve Editör Ayarları ---
+.vscode/
+.idea/
+*.swp
+
+# --- İşletim Sistemi Dosyaları ---
+.DS_Store
+Thumbs.db
+
+# --- Proje Çıktıları ---
+# Eğer kodun png üretiyorsa bunu versiyonlamaya gerek yok
+*.png
