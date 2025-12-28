@@ -29,7 +29,7 @@ def get_database():
 db = get_database()
 
 
-llm = ChatOllama(model="gpt-oss:120b-cloud", temperature=0)
+llm = ChatOllama(model="gpt-oss:120b-cloud", temperature=0,base_url="http://localhost:11434")
 
 
 class State(TypedDict):

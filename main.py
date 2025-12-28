@@ -1,4 +1,3 @@
-from rag import rag_app
 import requests
 
 
@@ -9,7 +8,7 @@ print("-----"*20)
 while  True:
     try :
         user_input=input("User: ")
-        if user_input.lower() in ["exit","quit","çıkış"]:
+        if user_input.lower().strip() in ["exit","quit","çıkış"]:
             break
         print("Süt sihirbazı düşünüyor...........")
         result=requests.post(f"{base_url}/query",json={"question":user_input})
